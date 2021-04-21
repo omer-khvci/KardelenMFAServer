@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KardelenMFAServer", "KardelenMFAServer\KardelenMFAServer.csproj", "{E7A41FA6-4369-402E-B2F8-169807E5AC7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7A41FA6-4369-402E-B2F8-169807E5AC7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A41FA6-4369-402E-B2F8-169807E5AC7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A41FA6-4369-402E-B2F8-169807E5AC7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A41FA6-4369-402E-B2F8-169807E5AC7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E1396D7-CCB1-4F7B-AA3A-BCE41B5414CB}
+	EndGlobalSection
+EndGlobal
