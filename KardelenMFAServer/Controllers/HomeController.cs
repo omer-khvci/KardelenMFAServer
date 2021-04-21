@@ -70,7 +70,7 @@ namespace KardelenMFAServer.Controllers
                 TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
                 string UserUniqueKey = (Convert.ToString(Session["tempid"])+key);
                 Session["Useruniquekey"] = UserUniqueKey;
-                var setupinfo = tfa.GenerateSetupCode("Google Auth Test",UserUniqueKey,300,300);
+                var setupinfo = tfa.GenerateSetupCode("Google Auth Test",UserUniqueKey,150,150);
                 ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
                 ViewBag.SetupCode = setupinfo.ManualEntryKey;
                 return View();
