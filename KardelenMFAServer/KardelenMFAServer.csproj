@@ -173,7 +173,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\VerifyAuth.cshtml" />
-    <Content Include="Views\Home\AdminQR.cshtml" />
     <Content Include="Views\Home\Myprofile.cshtml" />
   </ItemGroup>
   <ItemGroup>

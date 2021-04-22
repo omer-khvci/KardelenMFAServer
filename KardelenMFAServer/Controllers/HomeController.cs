@@ -37,6 +37,12 @@ namespace KardelenMFAServer.Controllers
         {
             if (Session["tempid"] != null)
             {
+                TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
+                string UserUniqueKey = (Convert.ToString(Session["tempid"]) + key);
+                Session["Useruniquekey"] = UserUniqueKey;
+                var setupinfo = tfa.GenerateSetupCode("Google Auth Test", UserUniqueKey, 150, 150);
+                ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
+                ViewBag.SetupCode = setupinfo.ManualEntryKey;
                 return View();
             }
             else
@@ -53,8 +59,9 @@ namespace KardelenMFAServer.Controllers
         {
             var token = fc["passcode"];
             TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
-            string useruniquekey = Convert.ToString(Session["tempid"])+key;
-            bool isvalid = tfa.ValidateTwoFactorPIN(useruniquekey, token);
+            string UserUniqueKey = Convert.ToString(Session["tempid"])+key;
+            Session["Useruniquekey"] = UserUniqueKey;
+            bool isvalid = tfa.ValidateTwoFactorPIN(UserUniqueKey, token);
             if (isvalid)
             {
                 Session["id"] = Convert.ToString(Session["tempid"]);
@@ -62,25 +69,6 @@ namespace KardelenMFAServer.Controllers
             }
             return RedirectToAction("Login");
             
-        }
-        public ActionResult AdminQR()
-        {
-            if (Session["tempid"] != null)
-            {
-                TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
-                string UserUniqueKey = (Convert.ToString(Session["tempid"])+key);
-                Session["Useruniquekey"] = UserUniqueKey;
-                var setupinfo = tfa.GenerateSetupCode("Google Auth Test",UserUniqueKey,150,150);
-                ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
-                ViewBag.SetupCode = setupinfo.ManualEntryKey;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-            
-
         }
         public ActionResult Myprofile()
 

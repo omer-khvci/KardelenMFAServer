@@ -18,6 +18,10 @@
                 <input type="text" name="passcode" placeholder="enter 6 digit code here...." class="form-control" /><br /><br />
                 <input type="submit" value="Giriş Yap" class="btn btn-success" />
             </div>
+            <div class="col-sm-2"><label>Google Authenticator Kare Kod Okutunuz</label></div>
+            <div class="col-sm-5">
+                <img src="@ViewBag.qrcode" />
+            </div>
         </div>
     </div>
 </form>
