@@ -43,6 +43,7 @@ namespace KardelenMFAServer.Controllers
                 var setupinfo = tfa.GenerateSetupCode("Google Auth Test", UserUniqueKey, 150, 150);
                 ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
                 ViewBag.SetupCode = setupinfo.ManualEntryKey;
+                TempData["msgHata"] = "Girdiğini Kod Hatalıdır.";
                 return View();
             }
             else
@@ -67,8 +68,10 @@ namespace KardelenMFAServer.Controllers
                 Session["id"] = Convert.ToString(Session["tempid"]);
                 return RedirectToAction("MyProfile");
             }
-            return RedirectToAction("Login");
-            
+            else {
+                
+                return RedirectToAction("VerifyAuth");
+            }
         }
         public ActionResult Myprofile()
 
