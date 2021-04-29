@@ -38,7 +38,7 @@ namespace KardelenMFAServer.Controllers
             if (Session["tempid"] != null)
             {
                 TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
-                string UserUniqueKey = (Convert.ToString(Session["tempid"]) + key);
+                string UserUniqueKey = (Convert.ToString(Session["tempid"]));
                 Session["Useruniquekey"] = UserUniqueKey;
                 var setupinfo = tfa.GenerateSetupCode("Google Auth Test", UserUniqueKey, 150, 150);
                 ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
@@ -54,13 +54,13 @@ namespace KardelenMFAServer.Controllers
            
            
         }
-        string key = "test987@76";
+      
         [HttpPost]
         public ActionResult VerifyAuth(FormCollection fc)
         {
             var token = fc["passcode"];
             TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
-            string UserUniqueKey = Convert.ToString(Session["tempid"])+key;
+            string UserUniqueKey = Convert.ToString(Session["tempid"]);
             Session["Useruniquekey"] = UserUniqueKey;
             bool isvalid = tfa.ValidateTwoFactorPIN(UserUniqueKey, token);
             if (isvalid)
